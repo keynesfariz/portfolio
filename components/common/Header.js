@@ -1,49 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { navigationLinks } from "utilities/constants";
+import ProfilePicture from "./ProfilePicture";
 
 export default function Header() {
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
-
-  const navLinks = [
-    {
-      name: "About",
-      link: "/about",
-      icon: "fi fi-rr-user",
-      hover: "bg-rose-500",
-    },
-    {
-      name: "Portfolio",
-      link: "/portfolio",
-      icon: "fi fi-rr-resources",
-      hover: "bg-orange-500",
-    },
-    {
-      name: "Writing",
-      link: "/writing",
-      icon: "fi fi-rr-edit",
-      hover: "bg-teal-500",
-    },
-    {
-      name: "Contact",
-      link: "/contact",
-      icon: "fi fi-rr-envelope",
-      hover: "bg-sky-500",
-    },
-  ];
-
-  const ProfilePicture = () => {
-    return (
-      <Image
-        layout="fill"
-        objectFit="cover"
-        src={`https://www.gravatar.com/avatar/${process.env.NEXT_PUBLIC_PROFILE_PICTURE_MD5}`}
-        alt="Fariz Muhammad"
-      />
-    );
-  };
 
   return (
     <>
@@ -73,11 +36,11 @@ export default function Header() {
       </header>
       {showMenu && (
         <nav className="absolute inset-x-0 mt-[57px] flex justify-around border-y border-orange-200 bg-orange-100 px-6 py-3 text-zinc-600">
-          {navLinks.map((item) => (
+          {navigationLinks.map((item) => (
             <Link key={item.link} href={item.link} passHref>
               <a
                 className={`cursor-pointer rounded px-4 py-1 font-bold ${
-                  item.link == router.asPath ? item.hover + " text-white" : ""
+                  item.link == router.asPath ? "bg-rose-500 text-white" : ""
                 }`}
               >
                 {item.name}
@@ -94,13 +57,13 @@ export default function Header() {
             </div>
           </div>
         </Link>
-        {navLinks.map((item) => (
+        {navigationLinks.map((item) => (
           <Link key={item.link} href={item.link} passHref>
             <button
               title={item.name}
               className={`relative flex aspect-square w-10 items-center justify-center rounded-full transition-colors duration-150 ease-in-out ${
                 router.asPath == item.link
-                  ? `${item.hover} text-white`
+                  ? `bg-rose-500 text-white`
                   : `hover:bg-orange-100`
               }`}
             >
