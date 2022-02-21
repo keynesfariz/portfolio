@@ -29,13 +29,13 @@ export default function Header() {
             }`}
           >
             <i
-              className={`fi ${showMenu ? "fi-br-cross" : "fi-br-menu-dots"}`}
+              className={`fi ${showMenu ? "fi-br-cross" : "fi-br-menu-burger"}`}
             />
           </button>
         </div>
       </header>
       {showMenu && (
-        <nav className="absolute inset-x-0 mt-[57px] flex justify-around border-y border-orange-200 bg-orange-100 px-6 py-3 text-zinc-600">
+        <nav className="absolute inset-x-0 mt-[57px] flex justify-around border-y border-orange-200 bg-orange-100 px-6 py-3 text-zinc-600 md:hidden">
           {navigationLinks.map((item) => (
             <Link key={item.link} href={item.link} passHref>
               <a

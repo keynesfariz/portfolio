@@ -5,8 +5,8 @@ export const navigationLinks = [
     icon: "fi fi-rr-user",
   },
   {
-    name: "Portfolio",
-    link: "/portfolio",
+    name: "Projects",
+    link: "/projects",
     icon: "fi fi-rr-resources",
   },
   {
@@ -14,6 +14,11 @@ export const navigationLinks = [
     link: "/writing",
     icon: "fi fi-rr-edit",
   },
+  // {
+  //   name: "Posts",
+  //   link: "/posts",
+  //   icon: "fi fi-rr-document-signed",
+  // },
   {
     name: "Contact",
     link: "/contact",
@@ -51,3 +56,5 @@ export const contacts = {
   twitter: "https://twitter.com/keynesfariz",
   instagram: "https://instagram.com/keynesfariz",
 };
+
+export const PROJECT = "project";

@@ -1,14 +1,15 @@
 import Layout from "components/common/Layout";
 import PostSection from "components/posts/PostSection";
 import { getAllPosts } from "utilities/blogger";
+import { PROJECT } from "utilities/constants";
 
-export default function Portfolio({ rawPosts }) {
+export default function Projects({ rawPosts }) {
   return (
-    <Layout meta={{ title: "Portfolio" }}>
+    <Layout meta={{ title: "Projects" }}>
+      <h1>Projects</h1>
       <p className="lead">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, maxime
-        accusamus? Commodi itaque quo consectetur vitae? Dolorem, impedit
-        aliquam. Magnam.
+        Below are some of my projects that I've worked on and I can remember
+        (because I'm bad at keeping track of them)
       </p>
       <PostSection rawPosts={rawPosts} />
     </Layout>
@@ -16,8 +17,7 @@ export default function Portfolio({ rawPosts }) {
 }
 
 export async function getStaticProps() {
-  const postlabel = "design";
-  const data = await getAllPosts(postlabel);
+  const data = await getAllPosts(PROJECT);
 
   if (data.error || !data.items) {
     return {
@@ -25,7 +25,7 @@ export async function getStaticProps() {
     };
   }
 
-  const rawPosts = data.items;
+  const rawPosts = data.items ? data.items : [];
 
   return {
     props: {
