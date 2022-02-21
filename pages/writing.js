@@ -18,7 +18,7 @@ export default function Writing({ rawPosts }) {
 export async function getStaticProps() {
   const data = await getAllPosts();
 
-  if (data.error || !data.items) {
+  if (data.error) {
     return {
       notFound: true,
     };

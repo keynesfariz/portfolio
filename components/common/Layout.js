@@ -25,7 +25,7 @@ export default function Layout({ meta, showContact = true, children }) {
       <div className="mx-auto flex min-h-screen max-w-screen-2xl flex-col print:border-none md:flex-row">
         <Header />
         <main className="flex-1 border-x border-zinc-200 px-6 pt-8 print:border-none print:px-0 md:px-16 md:pt-20 md:pb-0 lg:pb-12">
-          <article className="prose prose-img:shadow-lg prose-img:mx-auto prose-img:rounded-md md:prose-lg prose-zinc prose-headings:font-sans prose-lead:font-bold prose-p:leading-loose md:prose-headings:leading-snug md:prose-lead:leading-loose prose-headings:decoration-4 prose-headings:underline-offset-2 md:prose-headings:decoration-[6px] md:prose-headings:underline-offset-4 mx-auto  max-w-3xl font-serif selection:bg-orange-200 print:max-w-none">
+          <article className="prose prose-img:shadow-lg prose-img:mx-auto prose-img:rounded-md md:prose-lg prose-zinc prose-headings:font-sans prose-lead:font-bold prose-p:leading-loose md:prose-headings:leading-snug md:prose-lead:leading-loose prose-headings:decoration-4 prose-headings:underline-offset-2 md:prose-headings:decoration-[6px] md:prose-headings:underline-offset-4 mx-auto max-w-3xl font-serif selection:bg-orange-200 print:max-w-none">
             {children}
           </article>
           <div className="-mx-6 mt-8 lg:hidden">

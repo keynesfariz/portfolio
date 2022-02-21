@@ -19,7 +19,7 @@ export default function Projects({ rawPosts }) {
 export async function getStaticProps() {
   const data = await getAllPosts(PROJECT);
 
-  if (data.error || !data.items) {
+  if (data.error) {
     return {
       notFound: true,
     };
