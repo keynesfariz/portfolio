@@ -19,6 +19,7 @@ export async function getStaticProps() {
   const data = await getAllPosts();
 
   if (data.error) {
+    console.log(data.error);
     return {
       notFound: true,
     };
