@@ -3,7 +3,7 @@ import ExternalLink from "./ExternalLink";
 
 export default function Footer() {
   return (
-    <footer className="absolute inset-x-0 bottom-0 border-t border-zinc-200 px-6 py-4 text-zinc-400">
+    <footer className="border-t border-zinc-200 px-6 py-4 text-zinc-400">
       <div className="container mx-auto flex max-w-3xl flex-col justify-between text-center text-xs leading-loose">
         <span>Copyright &copy; 2022</span>
         <span>
