@@ -18,7 +18,7 @@ export default function Search({ query, handleLocalSearch }) {
         placeholder="Search posts..."
       />
       <div className="absolute inset-y-0 right-0 pr-3 pt-[0.55rem] text-xl text-zinc-300 peer-focus:text-zinc-400 md:pt-[0.7rem]">
-        <i class="fi fi-rr-search"></i>
+        <i className="fi fi-rr-search"></i>
       </div>
     </div>
   );
