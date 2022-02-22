@@ -57,7 +57,7 @@ export async function getServerSideProps(context) {
   const data = await getAllPosts(label);
 
   if (data.error) {
-    console.log(data.error);
+    // console.log(data.error);
     return {
       notFound: true,
     };

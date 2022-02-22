@@ -20,7 +20,7 @@ export async function getStaticProps() {
   const data = await getAllPosts(PROJECT);
 
   if (data.error) {
-    console.log(data.error);
+    // console.log(data.error);
     return {
       notFound: true,
     };
@@ -29,9 +29,9 @@ export async function getStaticProps() {
   const rawPosts = data.items ? data.items : [];
 
   return {
+    revalidate: 60,
     props: {
       rawPosts,
-      revalidate: 60,
     },
   };
 }
