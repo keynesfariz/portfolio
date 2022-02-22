@@ -5,8 +5,7 @@ export default function Contact() {
     <Layout meta={{ title: "Contact" }}>
       <h1>Contact</h1>
       <p className="lead">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
-        similique! Lorem ipsum dolor sit amet.
+        I have made a change to <code>.env.local</code> file
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ut eius
