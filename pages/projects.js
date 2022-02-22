@@ -20,6 +20,7 @@ export async function getStaticProps() {
   const data = await getAllPosts(PROJECT);
 
   if (data.error) {
+    // console.log(data.error.details);
     return {
       notFound: true,
     };

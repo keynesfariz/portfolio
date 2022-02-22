@@ -34,10 +34,12 @@ export async function getStaticProps(context) {
   const post = await getPostByPath(postPath.join("/"));
 
   if (post.error) {
+    // console.log(post);
     return {
       notFound: true,
     };
   }
+
   return {
     props: {
       post,
@@ -55,6 +57,7 @@ export async function getStaticPaths() {
     if (!data.error) {
       data.items.map((post) => {
         const mySlug = getSlugFromURL(post.url);
+        // console.log(mySlug);
         const myParams = {
           params: {
             postPath: mySlug.split("/"),
