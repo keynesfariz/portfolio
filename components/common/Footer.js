@@ -3,8 +3,8 @@ import ExternalLink from "./ExternalLink";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-200 px-6 py-4 text-zinc-400 lg:absolute lg:inset-x-0 lg:bottom-0">
-      <div className="container mx-auto flex max-w-3xl flex-col text-xs leading-loose md:flex-row md:justify-between lg:flex-col lg:text-center">
+    <footer className="absolute inset-x-0 bottom-0 border-t border-zinc-200 px-6 py-4 text-zinc-400">
+      <div className="container mx-auto flex max-w-3xl flex-col justify-between text-center text-xs leading-loose">
         <span>Copyright &copy; 2022</span>
         <span>
           {"Made with "}

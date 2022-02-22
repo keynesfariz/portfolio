@@ -1,5 +1,6 @@
 import Article from "components/common/Article";
 import ExternalLink from "components/common/ExternalLink";
+import Footer from "components/common/Footer";
 import Head from "next/head";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Under Construction! &mdash; @keynesfariz</title>
       </Head>
-      <div className="flex min-h-screen flex-col items-center justify-center space-y-6">
+      <div className="flex min-h-screen flex-col items-center justify-center space-y-6 px-8">
         <div className="flex aspect-square w-16 items-center justify-center rounded-full bg-orange-300 ">
           <i className="fi fi-rr-broom mt-3 animate-bounce text-3xl text-zinc-600"></i>
         </div>
@@ -33,6 +34,7 @@ export default function Home() {
             </p>
           </div>
         </Article>
+        <Footer />
       </div>
     </>
   );
