@@ -1,5 +1,4 @@
 import Layout from "components/common/Layout";
-import Image from "next/image";
 
 export default function About() {
   return (
@@ -14,14 +13,6 @@ export default function About() {
         Engineer specialized in{" "}
         <span className="underline decoration-rose-500">Web-Based Apps</span>
       </h1>
-      <div className="relative aspect-[2/1] w-full">
-        <Image
-          src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
-          objectFit="cover"
-          layout="fill"
-          alt="Image ALT"
-        />
-      </div>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ut eius
         qui praesentium, reprehenderit alias dignissimos molestiae maxime ab,

@@ -6,6 +6,6 @@ module.exports = {
     },
   },
   images: {
-    domains: ["pbs.twimg.com", "images.unsplash.com", "www.gravatar.com"],
+    domains: ["www.gravatar.com"],
   },
 };
