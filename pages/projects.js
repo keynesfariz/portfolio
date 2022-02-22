@@ -8,8 +8,8 @@ export default function Projects({ rawPosts }) {
     <Layout meta={{ title: "Projects" }}>
       <h1>Projects</h1>
       <p className="lead">
-        Below are some of my projects that I've worked on and I can remember
-        (because I'm bad at keeping track of them)
+        Below are some of my projects that I&apos;ve worked on and I can
+        remember (because I&apos;m bad at keeping track of them)
       </p>
       <PostSection rawPosts={rawPosts} />
     </Layout>
