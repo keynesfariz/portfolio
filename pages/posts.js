@@ -4,49 +4,48 @@ import PostSection from "components/posts/PostSection";
 import { getAllPosts } from "utilities/blogger";
 import Search from "components/posts/Search";
 
-export default function Posts({ label, rawPosts }) {
-  let title = label ? `'${label.toUpperCase()}'` : "All Posts";
-  title += ` (${rawPosts.length})`;
+export default function Posts({ label, posts }) {
+  const [query, setQuery] = useState("");
+  const filteredPosts =
+    query === ""
+      ? posts
+      : posts.filter((post) => {
+          return post.title.toLowerCase().includes(query.toLowerCase());
+        });
 
-  const [posts, setPosts] = useState(rawPosts); // post reflected in the UI
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleLocalSearch = (childQuery) => {
-    const newPosts =
-      childQuery.length > 0
-        ? [
-            ...rawPosts.filter(
-              (post) =>
-                post.title.toLowerCase().indexOf(childQuery.toLowerCase()) > -1
-            ),
-          ]
-        : rawPosts;
-    setPosts(newPosts);
-    setSearchQuery(childQuery);
-  };
+  const title = label
+    ? `'${label.toUpperCase()}' in Posts (${posts.length})`
+    : `All Posts (${posts.length})`;
 
   return (
     <Layout meta={{ title }}>
       <h2>
         {label ? (
           <span>
-            All Posts under{" "}
-            <span className="underline decoration-rose-500 decoration-4 underline-offset-2">{`'${label.toUpperCase()}'`}</span>{" "}
-            ({posts.length})
+            <span className="underline decoration-rose-500 decoration-[3px] underline-offset-[3px]">{`'${label.toUpperCase()}'`}</span>{" "}
+            in Posts ({posts.length})
           </span>
         ) : (
-          <span>{title}</span>
+          <span>
+            <span className="underline decoration-rose-500 decoration-[3px] underline-offset-[3px]">
+              All
+            </span>{" "}
+            Posts ({posts.length})
+          </span>
         )}
       </h2>
-      {(posts.length >= 10 || searchQuery) && (
-        <Search handleLocalSearch={handleLocalSearch} />
-      )}
-      {posts.length > 0 ? (
-        <PostSection rawPosts={posts} />
-      ) : (
-        <p className="lead break-words">
-          No Post Found under &apos;{searchQuery ? searchQuery : label}&apos;
+      <Search parentOnChange={(q) => setQuery(q)} />
+      {filteredPosts.length > 0 ? (
+        <PostSection posts={filteredPosts} />
+      ) : query || label ? (
+        <p className="lead">
+          No posts found under{" "}
+          <span className="underline decoration-orange-300 decoration-[3px] underline-offset-[3px]">{`'${
+            query ? query.toLowerCase() : label.toLowerCase()
+          }'`}</span>
         </p>
+      ) : (
+        <p className="lead">No posts found.</p>
       )}
     </Layout>
   );
@@ -54,21 +53,18 @@ export default function Posts({ label, rawPosts }) {
 
 export async function getServerSideProps(context) {
   const label = context.query.label ? context.query.label : "";
-  const data = await getAllPosts(label);
+  const posts = await getAllPosts(label);
 
-  if (data.error) {
-    // console.log(data.error);
+  if (posts.error) {
     return {
       notFound: true,
     };
   }
 
-  const rawPosts = data.items ? data.items : [];
-
   return {
     props: {
       label,
-      rawPosts,
+      posts,
     },
   };
 }

@@ -2,30 +2,30 @@ import moment from "moment";
 import Link from "next/link";
 import { getSlugFromURL } from "utilities/helpers";
 
-export default function PostSection({ rawPosts }) {
-  let posts = [];
-  let postYears = [];
+export default function PostSection({ posts }) {
+  let renderedPosts = [];
+  let renderedYears = [];
 
-  rawPosts.map((item) => {
+  posts.map((item) => {
     const postYear = moment(item.published).format("YYYY");
-    if (posts[postYear] === undefined) {
-      posts[postYear] = [];
+    if (renderedPosts[postYear] === undefined) {
+      renderedPosts[postYear] = [];
     }
-    posts[postYear].push(item);
+    renderedPosts[postYear].push(item);
   });
 
-  for (let year in posts) {
-    postYears.push(year);
+  for (let year in renderedPosts) {
+    renderedYears.push(year);
   }
 
-  postYears.sort((a, b) => {
+  renderedYears.sort((a, b) => {
     if (a > b) return -1;
     if (a < b) return 1;
     return 0;
   });
 
-  return postYears
-    ? postYears.map((year) => (
+  return renderedYears
+    ? renderedYears.map((year) => (
         <section
           className="prose-a:underline-offset-4 prose-a:decoration-2 prose-a:decoration-zinc-300 hover:prose-a:text-rose-500 hover:prose-a:decoration-rose-300"
           key={year}
@@ -35,9 +35,9 @@ export default function PostSection({ rawPosts }) {
             <hr />
           </div>
           <ul>
-            {posts[year].map((post, i) => (
-              <li key={i} className="">
-                <Link href={"/" + getSlugFromURL(post.url)}>{post.title}</Link>
+            {renderedPosts[year].map((post, i) => (
+              <li key={i}>
+                <Link href={`/${post.slug}`}>{post.title}</Link>
               </li>
             ))}
           </ul>

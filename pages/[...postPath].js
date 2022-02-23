@@ -2,7 +2,7 @@ import Layout from "components/common/Layout";
 import moment from "moment";
 import Link from "next/link";
 import { getAllPosts, getPostByPath } from "utilities/blogger";
-import { getSlugFromURL } from "utilities/helpers";
+import { cleanUpPostItem } from "utilities/helpers";
 
 export default function Post({ post }) {
   return (
@@ -12,7 +12,7 @@ export default function Post({ post }) {
         {post.title}
       </h1>
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
-      {post.labels && (
+      {post.labels.length > 0 && (
         <div className="not-prose pt-4">
           <hr className="mb-1 md:mb-3" />
           {post.labels.map((label) => (
@@ -31,10 +31,10 @@ export default function Post({ post }) {
 export async function getStaticProps(context) {
   const { postPath } = context.params;
 
-  const post = await getPostByPath(postPath.join("/"));
+  const rawPost = await getPostByPath(postPath.join("/"));
+  const post = cleanUpPostItem(rawPost);
 
   if (post.error) {
-    // console.log(post);
     return {
       notFound: true,
     };
@@ -55,15 +55,13 @@ export async function getStaticPaths() {
     const data = await getAllPosts("", nextPageToken);
 
     if (!data.error) {
-      data.items.map((post) => {
-        const mySlug = getSlugFromURL(post.url);
-        // console.log(mySlug);
-        const myParams = {
+      data.map((post) => {
+        const postParam = {
           params: {
-            postPath: mySlug.split("/"),
+            postPath: post.slug.split("/"),
           },
         };
-        paths.push(myParams);
+        paths.push(postParam);
       });
 
       nextPageToken = data.nextPageToken ? data.nextPageToken : null;
