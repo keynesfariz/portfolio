@@ -42,3 +42,15 @@ export async function getPostByPath(postPath) {
     return cleanUpPostItem(data);
   }
 }
+
+export async function getPageById(pageId) {
+  const fetchURL = `${process.env.GOOGLE_API_BASE_URL}/pages/${pageId}?key=${process.env.GOOGLE_API_KEY}`;
+  const res = await fetch(fetchURL, header);
+  const data = await res.json();
+
+  if (data.error) {
+    return data;
+  } else {
+    return cleanUpPostItem(data);
+  }
+}

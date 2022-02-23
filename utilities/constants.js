@@ -57,4 +57,5 @@ export const contacts = {
   instagram: "https://instagram.com/keynesfariz",
 };
 
-export const PROJECT = "project";
+export const _PROJECT_LABEL = "project";
+export const _FORMER_PROJECT_PAGE_ID = "8087529757347385851";

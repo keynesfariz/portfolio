@@ -1,7 +1,7 @@
 import Layout from "components/common/Layout";
 import PostSection from "components/posts/PostSection";
 import { getAllPosts } from "utilities/blogger";
-import { PROJECT } from "utilities/constants";
+import { _PROJECT_LABEL } from "utilities/constants";
 
 export default function Writing({ posts }) {
   return (
@@ -30,7 +30,7 @@ export async function getStaticProps() {
           const labels = post.labels;
           if (labels === undefined) {
             return true;
-          } else if (labels.some((l) => l === PROJECT)) {
+          } else if (labels.some((l) => l === _PROJECT_LABEL)) {
             return false;
           } else {
             return true;
