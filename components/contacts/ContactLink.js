@@ -1,7 +1,7 @@
 export default function ContactLink({ href, capitalize = true, children }) {
   return (
     <li
-      className={`font-serif font-bold text-teal-500 underline decoration-2 underline-offset-2 ${
+      className={`font-serif font-bold text-teal-500 underline decoration-2 underline-offset-2 hover:text-teal-600 ${
         capitalize ? "capitalize" : ""
       }`}
     >
