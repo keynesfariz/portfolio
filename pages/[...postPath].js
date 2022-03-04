@@ -30,9 +30,7 @@ export default function Post({ post }) {
 
 export async function getStaticProps(context) {
   const { postPath } = context.params;
-
-  const rawPost = await getPostByPath(postPath.join("/"));
-  const post = cleanUpPostItem(rawPost);
+  const post = await getPostByPath(postPath.join("/"));
 
   if (post.error) {
     return {
