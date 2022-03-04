@@ -2,7 +2,6 @@ import Layout from "components/common/Layout";
 import moment from "moment";
 import Link from "next/link";
 import { getAllPosts, getPostByPath } from "utilities/blogger";
-import { cleanUpPostItem } from "utilities/helpers";
 
 export default function Post({ post }) {
   return (
